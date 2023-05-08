@@ -341,3 +341,10 @@ Let the pairing be G1 x G2 -> GT
 The scheme encrypts a point in GT as:
 - a point on GT (the point to be encrypted perturbed by a secret)
 - a bags of 4-points tuples (i.e., bag of points on GT x G1 x G1 x G2) [one tuple for each attribute-leave in the policy]
+
+# Run this Project
+```bash
+go mod init github.com/marcellop71/mosaic
+go get github.com/antlr/antlr4/runtime/Go/antlr@4.7.2
+go mod tidy
+```
