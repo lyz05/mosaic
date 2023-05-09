@@ -16,15 +16,15 @@ func main() {
 	user := "marcello.paris@gmail.com"
 
 	policies := []string{
-		"A@auth0",
-		"A@auth0 /\\ B@auth0",
-		"A@auth0 /\\ A@auth0",
-		"A@auth0 /\\ (B@auth0 /\\ (C@auth0 \\/ D@auth0))",
-		"A@auth0 /\\ ((D@auth0 \\/ (B@auth0 /\\ C@auth0)) \\/ A@auth0)",
-		"(A@auth0 \\/ C@auth0) /\\ (D@auth0 \\/ (B@auth0 /\\ C@auth0))",
-		"(/\\ A@auth0 (\\/ A@auth0 D@auth0 (/\\ B@auth0 C@auth0)))",
-		"(A@auth0 /\\ B@auth0) \\/ (A@auth0 /\\ C@auth0) \\/ (B@auth0 /\\ C@auth0)",
-		"A@auth0 /\\ B@auth0 /\\ C@auth0",
+		"A@auth0",             //true
+		"A@auth0 /\\ B@auth0", //true
+		"A@auth0 /\\ A@auth0", //true
+		"A@auth0 /\\ (B@auth0 /\\ (C@auth0 \\/ D@auth0))",                           //false
+		"A@auth0 /\\ ((D@auth0 \\/ (B@auth0 /\\ C@auth0)) \\/ A@auth0)",             //true
+		"(A@auth0 \\/ C@auth0) /\\ (D@auth0 \\/ (B@auth0 /\\ C@auth0))",             //false
+		"(/\\ A@auth0 (\\/ A@auth0 D@auth0 (/\\ B@auth0 C@auth0)))",                 //?
+		"(A@auth0 /\\ B@auth0) \\/ (A@auth0 /\\ C@auth0) \\/ (B@auth0 /\\ C@auth0)", //true
+		"A@auth0 /\\ B@auth0 /\\ C@auth0",                                           //false
 	}
 
 	for _, policy := range policies {

@@ -129,6 +129,12 @@ Please remark that the support by __z3__ and __miracl__ (or __pbc__) is managed 
 go run -tags=z3,miracl examples/ex_JsonAPI.go
 ```
 
+or
+
+```bash
+docker run -it mosaic:latest go run -tags=z3,miracl examples/ex_JsonAPI.go
+```
+
 Here, the signature is described by a suffix **Str** (plain string)
 or **Json** (json string, for the objects serialized as json strings).
 
@@ -343,8 +349,22 @@ The scheme encrypts a point in GT as:
 - a bags of 4-points tuples (i.e., bag of points on GT x G1 x G1 x G2) [one tuple for each attribute-leave in the policy]
 
 # Run this Project
+当项目中无go.mod时
 ```bash
 go mod init github.com/marcellop71/mosaic
 go get github.com/antlr/antlr4/runtime/Go/antlr@4.7.2
 go mod tidy
+```
+安装LevelDB
+```bash
+export VER="1.20"
+wget https://github.com/google/leveldb/archive/v${VER}.tar.gz
+tar xvf v${VER}.tar.gz
+rm -f v${VER}.tar.gz
+cd leveldb-${VER}
+make
+sudo scp -r out-static/lib* out-shared/lib* "/usr/local/lib"
+cd include
+sudo scp -r leveldb /usr/local/include
+sudo ldconfig
 ```

@@ -1,2 +1,4 @@
 lib/libmosaic.h
 lib/libmosaic.so
+
+mosaic.db
