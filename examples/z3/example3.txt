@@ -1,0 +1,8 @@
+(set-option :print-success false)
+(set-logic QF_UF)
+(set-info :smt-lib-version 2.0)
+(declare-fun B@auth0 () Bool)
+(declare-fun C@auth0 () Bool)
+(declare-fun A@auth0 () Bool)
+(declare-fun D@auth0 () Bool)
+(simplify (and A@auth0 (or A@auth0 (or D@auth0 (and B@auth0 C@auth0))))) 

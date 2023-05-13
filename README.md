@@ -1,6 +1,6 @@
 # Mosaic
 
-*Mosaic* is a library doing Attribute Based Encryption (ABE). It is meant to be used as a example of a cryptographic core to be embedded in any solution willing to rely on an ABE scheme of this kind
+*Mosaic* is a library doing Attribute Based Encryption (ABE)(基于属性的加密). It is meant to be used as a example of a cryptographic core to be embedded in any solution willing to rely on an ABE scheme of this kind
 (a Multi-Authority CipherText-Policy scheme, see below).
 
 ### Please remark
@@ -101,6 +101,7 @@ Everything binary is encoded to [base32](https://en.wikipedia.org/wiki/Base32)
 
 Given the JSON APIs, the library could also be exported as a shared object (resulting in *libmosaic.h* and *libabe.so* in *./lib* usable by many languages). The wrapping is trivial because there are only __char*__ in each signature.
 
+以下代码跑不了，其中的abe.NewRandomSecretJson()函数，have(string, sting)，而want(string)。
 ```bash
 go build -tags=z3,miracl -buildmode c-shared -o lib/libmosaic.so lib/mosaic.go
 ```
@@ -368,3 +369,19 @@ cd include
 sudo scp -r leveldb /usr/local/include
 sudo ldconfig
 ```
+安装z3解释器
+```bash
+pip install z3-solver
+z3 --version
+```
+
+# 注释
+ECC:(Elliptic Curve Cryptography)椭圆曲线密码学
+SMT:可满足性模理论(satisfiability modulo theories， SMT)
+
+# MIRACL
+MIRACL Core 是一个多语言且与架构无关的密码库，支持椭圆曲线加密、配对友好曲线加密、RSA、AES 对称加密和哈希函数。
+支持曲线SM2, BN462, BLS48581, C13318, JUBJUB, X448, SECP160R1, C1174, BLS48286, TWEEDLEDUM, TWEEDLEDEE
+
+# z3
+z3是由微软公司开发的一个优秀的SMT求解器（也就定理证明器），它能够检查逻辑表达式的可满足性。
