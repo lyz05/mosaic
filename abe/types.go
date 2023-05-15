@@ -234,10 +234,12 @@ func NewUserAttrsOfJsonStr(xJson string) (x *UserAttrs) {
 	return
 }
 
+// BASE32 encoding
 func Encode(x string) string {
 	return base32.StdEncoding.EncodeToString([]byte(x))
 }
 
+// BASE32 decoding
 func Decode(x string) string {
 	y, err := base32.StdEncoding.DecodeString(x)
 	if err != nil {
@@ -246,18 +248,22 @@ func Decode(x string) string {
 	return string(y)
 }
 
+// convert a GO language data structure to its json representation
 func JsonObjToStr(x interface{}) string {
 	x_ := ""
 	if x != nil {
+		//将GO语言数据结构转换问json字节切片
 		x__, err := json.Marshal(x)
 		if err != nil {
 			log.Error("json unmarshal error: %s", err)
 		}
+		//转换为字符串
 		x_ = string(x__)
 	}
 	return x_
 }
 
+// 给json字符串套一层base32编码
 func JsonObjToEncStr(x interface{}) string {
 	return Encode(JsonObjToStr(x))
 }

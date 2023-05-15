@@ -46,6 +46,7 @@ func btreeExtractLabelsOnLeaves(t *btree, ap *[][]int) {
 	}
 }
 
+// LSSS矩阵构造
 func encodeAccessPolicy(t *btree) [][]int {
 	var c int
 	var aptmp [][]int

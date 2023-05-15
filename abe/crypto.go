@@ -27,6 +27,7 @@ func NewRandomOrgJson(curveJson string) string {
 }
 
 // new random authority
+// 生成随机密钥，包含公钥和私钥
 func NewRandomAuth(org *Org) (authkeys *AuthKeys) {
 	authprv := &AuthPrv{
 		Org:   org,
@@ -98,6 +99,8 @@ func NewRandomSecretJson(orgJson string) string {
 	return Encode(JsonObjToStr(p.ToJsonObj()))
 }
 
+// 计算一个 secret 对象的 SHA256 哈希值
+// 返回密钥“P”值的 SHA256 哈希值
 func SecretHash(secret Point) string {
 	secret_hash := sha256.Sum256([]byte(secret.ToJsonObj().GetP()))
 	return Encode(string(secret_hash[:]))

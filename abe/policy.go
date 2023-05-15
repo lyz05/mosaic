@@ -13,6 +13,7 @@ import (
 
 // binary tree with string labels and
 // vectors for the LSSS representation
+// 二叉树（带着字符串）,v表示转换出的向量
 type btree struct {
 	label string
 	child [2]*btree
