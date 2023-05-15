@@ -350,6 +350,12 @@ The scheme encrypts a point in GT as:
 - a bags of 4-points tuples (i.e., bag of points on GT x G1 x G1 x G2) [one tuple for each attribute-leave in the policy]
 
 # Run this Project
+在Codespace下运行项目，执行如下的`install.sh`脚本，直接使用`go run`命令运行`examples`目录下的文件。
+```bash
+./install.sh
+go run -tags=z3,miracl examples/ex_JsonAPI.go
+go run -tags=z3,miracl examples/ex_JsonAPI_linear_constraints.go
+```
 当项目中无go.mod时
 ```bash
 go mod init github.com/marcellop71/mosaic
