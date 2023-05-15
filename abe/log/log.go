@@ -9,7 +9,11 @@ import (
 
 func Init(level string) {
 	//logrus.SetFormatter(&logrus.JSONFormatter{})
-	logrus.SetFormatter(&logrus.TextFormatter{DisableColors: false, FullTimestamp: true})
+	logrus.SetFormatter(&logrus.TextFormatter{
+		DisableColors:   false,
+		FullTimestamp:   true,
+		TimestampFormat: "2006-01-02 15:04:05.000",
+	})
 	logrus.SetOutput(os.Stdout)
 
 	switch level {
