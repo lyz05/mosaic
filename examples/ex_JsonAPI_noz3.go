@@ -10,8 +10,9 @@ import (
 )
 
 func main() {
-	log.Init("Info")
+	log.Init("Debug")
 
+	//读取本地配置文件
 	filename, err := filepath.Abs("./examples/config.yaml")
 	if err != nil {
 		log.Panic("%s", err)
@@ -53,21 +54,25 @@ func main() {
 		log.Info("----------------")
 		log.Info("policy: %s", policy)
 
-		// ecnrypting
+		// encrypting
+		log.Debug("encrypting")
 		secretJson := service.NewRandomSecret(org)
 		secret := abe.NewPointOfJsonStr(secretJson).GetP()
 		secret_hash := sha256.Sum256([]byte(secret))
 		log.Info("secret hash: %s", abe.Encode(string(secret_hash[:])))
 
-		policy = abe.RewritePolicy(policy)
+		// policy = abe.RewritePolicy(policy)
 		authpubsJson := abe.AuthPubsOfPolicyJson(policy)
 		authpubsJson = service.FetchAuthPubs(authpubsJson)
 		secret_enc := abe.EncryptJson(secretJson, policy, authpubsJson)
 
 		// decrypting
+		log.Debug("decrypting")
 		policy = abe.PolicyOfCiphertextJson(secret_enc)
 		userattrsJson := service.FetchUserAttrs(user)
+		log.Debug("SelectUserAttrs")
 		userattrsJson = abe.SelectUserAttrsJson(user, policy, userattrsJson)
+		log.Debug("FetchUserkeys")
 		userattrsJson = service.FetchUserkeys(userattrsJson)
 		secret_dec := abe.DecryptJson(secret_enc, userattrsJson)
 		secret_dec_hash := sha256.Sum256([]byte(secret_dec))
