@@ -1,4 +1,16 @@
 config:
+  example:
+    org: org0
+    lib: miracl
+    auths:
+      - "auth0"
+      - "auth1"
+    user: marcello.paris@gmail.com
+    attrs:
+      - "A@auth0"
+      - "B@auth0"
+      - "E=5@auth1"
+    policy: "(E@auth1 == 4) /\\ B@auth0"
   arithmetic:
     library: miracl
     curve: BN254

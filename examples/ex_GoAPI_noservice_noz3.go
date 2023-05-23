@@ -37,7 +37,7 @@ func main() {
 		// ecnrypting
 		secret := abe.NewRandomSecret(org)
 		//化简policy
-		policy = abe.RewritePolicy(policy)
+		// policy = abe.RewritePolicy(policy)
 		authpubs := abe.AuthPubsOfPolicy(policy)
 		for attr, _ := range authpubs.AuthPub {
 			authpubs.AuthPub[attr] = authkeys.AuthPub
